@@ -81,10 +81,22 @@ console.log((calAge2(2001)))
  console.log(yearsTillRetire('1983','Aruna'));
  */
 
+ function cutFruit(fruit){
+ return fruit *4
+ }
+
+
  function fruitProcessor(apple,orange)
 {
-    // console.log(apple,orange);
+    const applesCut = cutFruit(apple)
+    const orangesCut = cutFruit(orange)
     const juice = `juice with ${apple} apples and ${orange} oranges `
-    return juice 
+    const fruitsCut = ` ${applesCut} apples cut and ${orangesCut} oranges are cut` 
+    return {juice,fruitsCut} 
 }
-console.log(fruitProcessor(2,3));
+
+console.log(fruitProcessor(2,3))
+
+
+
+
