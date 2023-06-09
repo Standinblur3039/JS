@@ -20,26 +20,36 @@ document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess, typeof guess);
 
+  // when there is no input
   if (!guess) {
     document.querySelector('.message').textContent = '⛔ No Number !';
-  } else if (guess === secretNumber) {
+  }
+  // when the number is correct
+  else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '✅ Correct Number !';
-  } else if (guess > secretNumber) {
+  }
+  // when the number is greater
+  else if (guess > secretNumber) {
     if (Score > 1) {
+      // to maintain the score from going into negative
       document.querySelector('.message').textContent = '📈 Number is Greater !';
       Score--;
       document.querySelector('.score').textContent = Score;
     } else {
+      // when score goes to 0 , to display message as lost
       document.querySelector('.message').textContent = ' ☠️ You Lost !';
       console.log((document.querySelector('.score').textContent = 0));
     }
+    // when the number is smaller
   } else if (guess < secretNumber) {
     if (Score > 1) {
+      // to maintain the score from going into negative
       document.querySelector('.message').textContent =
         ' 📉 Number is Smaller !';
       Score--;
       document.querySelector('.score').textContent = Score;
     } else {
+      // when score goes to 0 , to display message as lost
       document.querySelector('.message').textContent = ' ☠️ You Lost !';
       console.log((document.querySelector('.score').textContent = 0));
     }
