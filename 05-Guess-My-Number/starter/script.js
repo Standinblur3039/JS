@@ -12,9 +12,8 @@ console.log((document.querySelector('.guess').value = 12));
 windows + . = emoji
 */
 
-let Score = 20;
-const secretNumber = Math.trunc(Math.random() * 21);
-document.querySelector('.number').textContent = secretNumber;
+let score = 20;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
@@ -26,32 +25,48 @@ document.querySelector('.check').addEventListener('click', function () {
   }
   // when the number is correct
   else if (guess === secretNumber) {
-    document.querySelector('.message').textContent = '✅ Correct Number !';
+    document.querySelector('.message').textContent = '✅ Correct Number !'; // .message is the class
+    document.querySelector('body').style.backgroundColor = '#60b347'; // here body is the html tag
+    document.querySelector('.number').style.width = '30rem';
+    document.querySelector('.number').textContent = secretNumber;
   }
   // when the number is greater
   else if (guess > secretNumber) {
-    if (Score > 1) {
+    if (score > 1) {
       // to maintain the score from going into negative
       document.querySelector('.message').textContent = '📈 Number is Greater !';
-      Score--;
-      document.querySelector('.score').textContent = Score;
+      score--;
+      document.querySelector('.score').textContent = score;
     } else {
       // when score goes to 0 , to display message as lost
       document.querySelector('.message').textContent = ' ☠️ You Lost !';
-      console.log((document.querySelector('.score').textContent = 0));
+      console.log(document.querySelector('.score').textContent == 0);
+      document.querySelector('body').style.backgroundColor = '#FF0000';
     }
     // when the number is smaller
   } else if (guess < secretNumber) {
-    if (Score > 1) {
+    if (score > 1) {
       // to maintain the score from going into negative
       document.querySelector('.message').textContent =
         ' 📉 Number is Smaller !';
-      Score--;
-      document.querySelector('.score').textContent = Score;
+      score--;
+      document.querySelector('.score').textContent = score;
     } else {
       // when score goes to 0 , to display message as lost
       document.querySelector('.message').textContent = ' ☠️ You Lost !';
-      console.log((document.querySelector('.score').textContent = 0));
+      console.log(document.querySelector('.score').textContent == 0);
+      document.querySelector('body').style.backgroundColor = '#FF0000';
     }
   }
+});
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+  secretNumber = Math.trunc(Math.random() * 21) + 1;
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.guess').value = '';
+
+  document.querySelector('body').style.backgroundColor = '#222'; // here body is the html tag
+  document.querySelector('.number').style.width = '15rem';
 });
