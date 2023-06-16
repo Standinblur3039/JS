@@ -38,3 +38,4 @@ getCountryData('japan');
 getCountryData('india');
 getCountryData('usa');
 getCountryData('korea');
+getCountryData('brazil');
